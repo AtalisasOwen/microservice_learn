@@ -13,6 +13,16 @@ import se.magnus.util.http.ServiceUtil;
 @RestController
 public class ProductServiceImpl implements ProductService {
 
+    @Override
+    public Product createProduct(Product body) {
+        return null;
+    }
+
+    @Override
+    public void deleteProduct(int productId) {
+
+    }
+
     private static final Logger LOG = LoggerFactory.getLogger(ProductServiceImpl.class);
 
     private final ServiceUtil serviceUtil;
