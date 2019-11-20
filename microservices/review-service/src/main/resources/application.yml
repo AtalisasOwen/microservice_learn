@@ -4,7 +4,10 @@ logging:
   level:
     root: INFO
     se.magnus: DEBUG
-
+spring:
+  datasource:
+    url: jdbc:sqlite:product.sqlite/reviews
+    driver-class-name: org.sqlite.JDBC
 ---
 spring.profiles: docker
 
