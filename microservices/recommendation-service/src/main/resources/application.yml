@@ -7,7 +7,7 @@ logging:
 
 spring:
   datasource:
-    url: jdbc:sqlite:product.sqlite/recommendation
+    url: jdbc:sqlite:product.sqlite
     driver-class-name: org.sqlite.JDBC
 ---
 spring.profiles: docker

@@ -49,11 +49,12 @@ public class ProductServiceImpl implements ProductService {
     public Product createProduct(Product body) {
         try {
             ProductEntity entity = mapper.apiToEntity(body);
-            ProductEntity newEntity = productRepository.save(entity);
+            productRepository.save(entity);
 
             LOG.debug("createProduct: entity created for productId: {}", body.getProductId());
-            return mapper.entityToApi(newEntity);
-
+            Product product = mapper.entityToApi(entity);
+            product.setServiceAddress(serviceUtil.getServiceAddress());
+            return product;
         } catch (DuplicateKeyException dke) {
             throw new InvalidInputException("Duplicate key, Product Id: " + body.getProductId());
         }
@@ -62,7 +63,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProduct(int productId) {
         LOG.debug("deleteProduct: tries to delete an entity with productId: {}", productId);
-        //productRepository.findByProductId(productId).ifPresent(e -> productRepository.delete(e));
+        productRepository.delete(productRepository.findByProductId(productId));
     }
 
 }
