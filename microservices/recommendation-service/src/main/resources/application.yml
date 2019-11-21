@@ -9,6 +9,9 @@ spring:
   datasource:
     url: jdbc:sqlite:product.sqlite
     driver-class-name: org.sqlite.JDBC
+    username:
+    password:
+
 ---
 spring.profiles: docker
 
