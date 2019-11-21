@@ -66,8 +66,13 @@ spring:
       host: 10.9.8.162
       port: 8500
       discovery:
-        register: false
-        enabled: true
+        service-name: product-composite
+        health-check-path: /actuator/health
+        health-check-critical-timeout: 20s
+        prefer-ip-address: true
+        health-check-interval: 10s
+        #prefer-agent-address: true
+        ip-address: 10.9.8.188
 
 
 ---

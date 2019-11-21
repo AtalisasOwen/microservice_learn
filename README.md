@@ -28,4 +28,6 @@
     - 目前关闭Health Check
     - product,recommendation,review只注册不发现
     - product-compose只发现不注册
+- Gateway:
+    - asda
 
