@@ -7,8 +7,10 @@ logging:
     se.magnus: DEBUG
 spring:
   datasource:
-    url: jdbc:sqlite:product.sqlite/product
+    url: jdbc:sqlite:product.sqlite
     driver-class-name: org.sqlite.JDBC
+    username:
+    password:
 ---
 spring.profiles: docker
 

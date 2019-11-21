@@ -11,5 +11,8 @@
 
 #### 详情
 - Swagger (OpenAPI): 有待学习
-- Chapter06 涉及持久化跳过！
+- Spring Data: PagingAndSortingRepository有待学习
+    - Optional对于MyBatis没作用
+    - ProductId对于product_id没作用
+- Entity的作用？？
 
