@@ -20,10 +20,11 @@ spring:
       discovery:
         service-name: product-service
         health-check-path: /actuator/health
-        health-check-critical-timeout: 40s
+        health-check-critical-timeout: 20s
         prefer-ip-address: true
         health-check-interval: 10s
-        register-health-check: false
+        #prefer-agent-address: true
+        ip-address: 10.9.8.188
 ---
 spring.profiles: docker
 
