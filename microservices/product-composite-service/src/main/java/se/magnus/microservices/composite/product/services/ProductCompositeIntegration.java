@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
@@ -33,6 +34,8 @@ public class ProductCompositeIntegration implements ProductService, Recommendati
     private final RestTemplate restTemplate;
     private final ObjectMapper mapper;
 
+    private final LoadBalancerClient loadBalancerClient;
+
     private final String productServiceUrl;
     private final String recommendationServiceUrl;
     private final String reviewServiceUrl;
@@ -41,23 +44,16 @@ public class ProductCompositeIntegration implements ProductService, Recommendati
     public ProductCompositeIntegration(
         RestTemplate restTemplate,
         ObjectMapper mapper,
-
-        @Value("${app.product-service.host}") String productServiceHost,
-        @Value("${app.product-service.port}") int    productServicePort,
-
-        @Value("${app.recommendation-service.host}") String recommendationServiceHost,
-        @Value("${app.recommendation-service.port}") int    recommendationServicePort,
-
-        @Value("${app.review-service.host}") String reviewServiceHost,
-        @Value("${app.review-service.port}") int    reviewServicePort
+        LoadBalancerClient loadBalancerClient
     ) {
 
         this.restTemplate = restTemplate;
         this.mapper = mapper;
+        this.loadBalancerClient = loadBalancerClient;
 
-        productServiceUrl        = "http://" + productServiceHost + ":" + productServicePort + "/product/";
-        recommendationServiceUrl = "http://" + recommendationServiceHost + ":" + recommendationServicePort + "/recommendation?productId=";
-        reviewServiceUrl         = "http://" + reviewServiceHost + ":" + reviewServicePort + "/review?productId=";
+        productServiceUrl        = loadBalancerClient.choose("product-service").getUri().toString()+"/product/";
+        recommendationServiceUrl = loadBalancerClient.choose("recommendation-service").getUri().toString()+"/recommendation?productId=";
+        reviewServiceUrl         = loadBalancerClient.choose("review-service").getUri().toString()+"/review?productId=";
     }
 
     @Override

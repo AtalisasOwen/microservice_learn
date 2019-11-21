@@ -6,11 +6,24 @@ logging:
     root: INFO
     se.magnus: DEBUG
 spring:
+  application:
+    name: product-service
   datasource:
     url: jdbc:sqlite::resource:product.sqlite
     driver-class-name: org.sqlite.JDBC
     username:
     password:
+  cloud:
+    consul:
+      host: 10.9.8.162
+      port: 8500
+      discovery:
+        service-name: product-service
+        health-check-path: /actuator/health
+        health-check-critical-timeout: 40s
+        prefer-ip-address: true
+        health-check-interval: 10s
+        register-health-check: false
 ---
 spring.profiles: docker
 
