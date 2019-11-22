@@ -31,5 +31,10 @@
 - Gateway:
     - 完成！神奇呀！！
     - lb://review-service, lb表示负载均衡的服务名
+- centralized configuration:
+    - 使用Consul进行配置（必须bootstrap.yaml）
+    - 在consul创建目录（/config/${spring.application.name}/${data-key}）
+    - 见https://blog.csdn.net/zhuyu19911016520/article/details/88141427
+    
     
 
