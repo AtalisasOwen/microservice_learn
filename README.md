@@ -26,9 +26,10 @@
     - 断路器：防止雪崩式失效，流量限制，并发限制，重试次数，超时
     - 分布式追踪：
 - Consul:
-    - 目前关闭Health Check
+    - 目前Docker模式下关闭Health Check
     - product,recommendation,review只注册不发现
-    - product-compose只发现不注册
+    - product-compose发现+注册
+    - gateway：服务发现
 - centralized configuration:
     - 使用Consul进行配置（必须bootstrap.yaml）
     - 在consul创建目录（/config/${spring.application.name}/${data-key}）
@@ -36,7 +37,8 @@
 - Gateway:
     - 完成！神奇呀！！
     - lb://review-service, lb表示负载均衡的服务名
-    - 未尝试负载均衡
+    - 未尝试负载均衡（理论上没问题）
+    - 未做边缘配置，因为OAuth2没学，下周来吧
 - 断路器未实现（跳过）
 - 分布式追踪（跳过）
 
