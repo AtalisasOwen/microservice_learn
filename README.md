@@ -30,6 +30,7 @@
     - product,recommendation,review只注册不发现
     - product-compose发现+注册
     - gateway：服务发现
+    - Feign真香！
 - centralized configuration:
     - 使用Consul进行配置（必须bootstrap.yaml）
     - 在consul创建目录（/config/${spring.application.name}/${data-key}）
