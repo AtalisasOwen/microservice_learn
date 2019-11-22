@@ -74,6 +74,10 @@ spring:
         #prefer-agent-address: true
         ip-address: 10.9.8.188
 
+app:
+  auth-server: localhost
+
+spring.security.oauth2.resourceserver.jwt.jwk-set-uri: http://${app.auth-server}:9999/.well-known/jwks.json
 
 ---
 spring.profiles: docker
@@ -91,4 +95,5 @@ spring:
         service-name: product-composite
         register-health-check: false
         prefer-ip-address: false
-
+app:
+  auth-server: auth-server

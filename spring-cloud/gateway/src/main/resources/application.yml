@@ -52,6 +52,11 @@ spring.cloud.gateway.routes:
   filters:
   - SetPath=/501
 
+app:
+  auth-server: localhost
+
+spring.security.oauth2.resourceserver.jwt.jwk-set-uri: http://${app.auth-server}:9999/.well-known/jwks.json
+
 management.endpoint.health.show-details: "ALWAYS"
 management.endpoints.web.exposure.include: "*"
 
@@ -65,3 +70,6 @@ logging:
 spring.profiles: docker
 
 server.port: 8080
+
+app:
+  auth-server: auth-server

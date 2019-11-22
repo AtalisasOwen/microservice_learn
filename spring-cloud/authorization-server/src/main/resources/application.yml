@@ -1,0 +1,13 @@
+server.port: 9999
+
+spring.application.name: auth-server
+
+
+management.endpoint.health.show-details: "ALWAYS"
+management.endpoints.web.exposure.include: "*"
+
+# security.oauth2.authorizationserver.jwt.enabled: false
+
+---
+spring.profiles: docker
+
