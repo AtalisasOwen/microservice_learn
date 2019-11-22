@@ -1,13 +1,11 @@
-package se.magnus.microservices.composite.product.services;
+package se.magnus.microservices.composite.product.services.ribbon;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import se.magnus.api.core.product.Product;
@@ -26,7 +24,7 @@ import java.util.List;
 
 import static org.springframework.http.HttpMethod.GET;
 
-@Component
+//@Component
 public class ProductCompositeIntegration implements ProductService, RecommendationService, ReviewService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ProductCompositeIntegration.class);

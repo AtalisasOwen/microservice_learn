@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan("se.magnus")
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 public class ReviewServiceApplication {
 
 	public static void main(String[] args) {

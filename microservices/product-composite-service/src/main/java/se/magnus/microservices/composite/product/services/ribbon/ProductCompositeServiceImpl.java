@@ -1,9 +1,7 @@
-package se.magnus.microservices.composite.product.services;
+package se.magnus.microservices.composite.product.services.ribbon;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
 import se.magnus.api.composite.product.*;
 import se.magnus.api.core.product.Product;
 import se.magnus.api.core.recommendation.Recommendation;
@@ -14,7 +12,7 @@ import se.magnus.util.http.ServiceUtil;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController
+//@RestController
 public class ProductCompositeServiceImpl implements ProductCompositeService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ProductCompositeServiceImpl.class);
@@ -22,7 +20,7 @@ public class ProductCompositeServiceImpl implements ProductCompositeService {
     private final ServiceUtil serviceUtil;
     private  ProductCompositeIntegration integration;
 
-    @Autowired
+    //@Autowired
     public ProductCompositeServiceImpl(ServiceUtil serviceUtil, ProductCompositeIntegration integration) {
         this.serviceUtil = serviceUtil;
         this.integration = integration;

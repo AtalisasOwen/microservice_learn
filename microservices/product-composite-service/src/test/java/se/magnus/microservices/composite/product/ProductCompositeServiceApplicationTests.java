@@ -11,7 +11,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import se.magnus.api.core.product.Product;
 import se.magnus.api.core.recommendation.Recommendation;
 import se.magnus.api.core.review.Review;
-import se.magnus.microservices.composite.product.services.ProductCompositeIntegration;
+import se.magnus.microservices.composite.product.services.ribbon.ProductCompositeIntegration;
 import se.magnus.util.exceptions.InvalidInputException;
 import se.magnus.util.exceptions.NotFoundException;
 
