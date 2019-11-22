@@ -80,3 +80,15 @@ spring.profiles: docker
 
 server.port: 8080
 
+spring:
+  application:
+    name: product-composite-service
+  cloud:
+    consul:
+      host: 10.9.8.162
+      port: 8500
+      discovery:
+        service-name: product-composite
+        register-health-check: false
+        prefer-ip-address: false
+

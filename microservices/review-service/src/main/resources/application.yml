@@ -27,3 +27,15 @@ spring:
 spring.profiles: docker
 
 server.port: 8080
+
+spring:
+  application:
+    name: review-service
+  cloud:
+    consul:
+      host: 10.9.8.162
+      port: 8500
+      discovery:
+        service-name: review-service
+        register-health-check: false
+        prefer-ip-address: false

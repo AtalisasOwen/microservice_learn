@@ -22,10 +22,13 @@ services:
   product-composite:
     build: microservices/product-composite-service
     mem_limit: 350m
-    ports:
-      - "8081:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - review
+      - recommendation
+      - product
+
 
   gateway:
     environment:
@@ -33,4 +36,6 @@ services:
     build: spring-cloud/gateway
     mem_limit: 350m
     ports:
-      - "8080:8080"
+      - "8082:8080"
+    depends_on:
+      - product-composite

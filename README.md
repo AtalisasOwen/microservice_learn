@@ -29,5 +29,7 @@
     - product,recommendation,review只注册不发现
     - product-compose只发现不注册
 - Gateway:
-    - asda
+    - 完成！神奇呀！！
+    - lb://review-service, lb表示负载均衡的服务名
+    
 

@@ -29,3 +29,15 @@ spring:
 spring.profiles: docker
 
 server.port: 8080
+
+spring:
+  application:
+    name: product-service
+  cloud:
+    consul:
+      host: 10.9.8.162
+      port: 8500
+      discovery:
+        service-name: product-service
+        register-health-check: false
+        prefer-ip-address: false

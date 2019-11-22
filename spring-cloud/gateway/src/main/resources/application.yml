@@ -18,6 +18,17 @@ spring.cloud.gateway.routes:
   predicates:
   - Path=/product-composite/**
 
+- id: product
+  uri: lb://product-service
+  predicates:
+    - Path=/product/**
+
+- id: review
+  uri: lb://review-service
+  predicates:
+    - Path=/review/**
+    - Path=/**
+
 - id: host_route_200
   uri: http://httpstat.us
   predicates:
@@ -53,3 +64,4 @@ logging:
 ---
 spring.profiles: docker
 
+server.port: 8080
