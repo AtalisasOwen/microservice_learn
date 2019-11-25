@@ -3,39 +3,46 @@ version: '2.1'
 services:
   product:
     build: microservices/product-service
-    mem_limit: 350m
+    mem_limit: 250m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
 
   recommendation:
     build: microservices/recommendation-service
-    mem_limit: 350m
+    mem_limit: 250m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
 
   review:
     build: microservices/review-service
-    mem_limit: 350m
+    mem_limit: 250m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
 
   product-composite:
     build: microservices/product-composite-service
-    mem_limit: 350m
+    mem_limit: 250m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - review
       - recommendation
       - product
-
+      - auth-server
 
   gateway:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     build: spring-cloud/gateway
-    mem_limit: 350m
+    mem_limit: 250m
     ports:
-      - "8088:8080"
+      - "8443:8443"
     depends_on:
       - product-composite
+      - auth-server
+
+  auth-server:
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    build: spring-cloud/authorization-server
+    mem_limit: 250m

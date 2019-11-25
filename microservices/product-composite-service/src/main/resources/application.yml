@@ -51,7 +51,8 @@ api:
 
 server.port: 7000
 
-
+app:
+  auth-server: localhost
 
 logging:
   level:
@@ -74,9 +75,13 @@ spring:
         #prefer-agent-address: true
         ip-address: 10.9.8.188
 
+spring.security.oauth2.resourceserver.jwt.jwk-set-uri: http://${app.auth-server}:9999/.well-known/jwks.json
 
 ---
 spring.profiles: docker
+
+app:
+  auth-server: auth-server
 
 server.port: 8080
 
