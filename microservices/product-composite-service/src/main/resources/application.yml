@@ -74,6 +74,19 @@ spring:
         health-check-interval: 10s
         #prefer-agent-address: true
         ip-address: 10.9.8.188
+  boot:
+    admin:
+      client:
+        url: http://localhost:8769
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
 
 spring.security.oauth2.resourceserver.jwt.jwk-set-uri: http://${app.auth-server}:9999/.well-known/jwks.json
 
@@ -96,4 +109,8 @@ spring:
         service-name: product-composite
         register-health-check: false
         prefer-ip-address: false
+  boot:
+    admin:
+      client:
+        url: http://admin-server:8769
 

@@ -6,18 +6,24 @@ services:
     mem_limit: 250m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - admin-server
 
   recommendation:
     build: microservices/recommendation-service
     mem_limit: 250m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - admin-server
 
   review:
     build: microservices/review-service
     mem_limit: 250m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - admin-server
 
   product-composite:
     build: microservices/product-composite-service
@@ -46,3 +52,9 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     build: spring-cloud/authorization-server
     mem_limit: 250m
+
+  admin-server:
+    build: spring-cloud/admin-server
+    mem_limit: 250m
+    ports:
+      - "8769:8769"

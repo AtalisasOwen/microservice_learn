@@ -15,9 +15,19 @@ spring:
         health-check-interval: 10s
         #prefer-agent-address: true
         ip-address: 10.9.8.188
+  boot:
+    admin:
+      client:
+        url: http://localhost:8769
 
-management.endpoint.health.show-details: "ALWAYS"
-management.endpoints.web.exposure.include: "*"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
 
 # security.oauth2.authorizationserver.jwt.enabled: false
 
@@ -33,3 +43,7 @@ spring:
         service-name: auth-server
         register-health-check: false
         prefer-ip-address: false
+  boot:
+    admin:
+      client:
+        url: http://admin-server:8769

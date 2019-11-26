@@ -24,6 +24,18 @@ spring:
         prefer-ip-address: true
         health-check-interval: 10s
         ip-address: 10.9.8.188
+  boot:
+    admin:
+      client:
+        url: http://localhost:8769
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
 
 ---
 spring.profiles: docker
@@ -41,3 +53,7 @@ spring:
         service-name: recommendation-service
         register-health-check: false
         prefer-ip-address: false
+  boot:
+    admin:
+      client:
+        url: http://admin-server:8769
